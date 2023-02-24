@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
-import { List, Contact } from './Phonebook.styled';
+import { List } from './Phonebook.styled';
+import ContactItem from '../ContactItem/ContactItem';
 
-const ContactList = ({ contacts, onDelete }) => {
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <List>
-      {contacts.map(({ id, name, number }) => (
-        <Contact key={id}>
-          <p>{name}</p>
-          <p>{number}</p>
-          <button onClick={() => onDelete(id)}>Delete</button>
-        </Contact>
+      {contacts.map(contact => (
+        <ContactItem
+          contact={contact}
+          onDeleteContact={onDeleteContact}
+          key={contact.id} />
       ))}
     </List>
   );
